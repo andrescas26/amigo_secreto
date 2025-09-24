@@ -3,85 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neflity</title>
+  <title>Amigo Secreto</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #141414;
+      color: white;
       margin: 0;
       padding: 0;
-      background-color: #141414;
-      color: #fff;
     }
     header {
-      background-color: #e50914;
+      background-color: red;
+      text-align: center;
+      padding: 15px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .container {
       padding: 20px;
       text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    section {
-      padding: 20px;
-    }
-    h2 {
-      color: #e50914;
     }
     .personajes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+      gap: 20px;
+      margin-top: 20px;
     }
-    .personaje {
-      background: #222;
+    .card {
+      background-color: #222;
       padding: 15px;
-      border-radius: 10px;
-      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .card h3 {
+      margin: 10px 0;
+      color: red;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkred;
+    }
+    .resultado {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: yellow;
     }
     footer {
-      background: #111;
-      color: #bbb;
-      text-align: center;
+      margin-top: 40px;
       padding: 15px;
-      margin-top: 20px;
+      background: #222;
+      text-align: center;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Neflity</h1>
-  </header>
-
-  <section>
-    <h2>Descripción</h2>
-    <p>
-      Bienvenido a <strong>Neflity</strong>, una plataforma ficticia inspirada en el estilo de las grandes
-      aplicaciones de streaming. Aquí podrás encontrar contenido, personajes e historias creadas para
-      practicar y aprender desarrollo web paso a paso.
-    </p>
-  </section>
-
-  <section>
-    <h2>Personajes principales</h2>
+  <header>🎁 Juego del Amigo Secreto 🎁</header>
+  
+  <div class="container">
+    <h2>Personajes</h2>
+    <p>Escribe el regalo que le vas a dar a tu amigo secreto y descubre quién te toca.</p>
+    
     <div class="personajes">
-      <div class="personaje">
+      <div class="card">
         <h3>Personaje 1</h3>
-        <p>Descripción breve del personaje 1.</p>
+        <p>Ana</p>
       </div>
-      <div class="personaje">
+      <div class="card">
         <h3>Personaje 2</h3>
-        <p>Descripción breve del personaje 2.</p>
+        <p>Carlos</p>
       </div>
-      <div class="personaje">
+      <div class="card">
         <h3>Personaje 3</h3>
-        <p>Descripción breve del personaje 3.</p>
+        <p>Luisa</p>
       </div>
-      <!-- Puedes seguir agregando más personajes aquí -->
+      <div class="card">
+        <h3>Personaje 4</h3>
+        <p>Pedro</p>
+      </div>
+      <div class="card">
+        <h3>Personaje 5</h3>
+        <p>Sofía</p>
+      </div>
+      <div class="card">
+        <h3>Personaje 6</h3>
+        <p>Mateo</p>
+      </div>
+      <div class="card">
+        <h3>Personaje 7</h3>
+        <p>Laura</p>
+      </div>
     </div>
-  </section>
+
+    <input type="text" id="regalo" placeholder="Escribe tu regalo aquí...">
+    <br>
+    <button onclick="sortear()">Descubrir mi Amigo Secreto</button>
+    
+    <div class="resultado" id="resultado"></div>
+  </div>
 
   <footer>
-    <p><em>Nota:</em> Esta página es solo un ejercicio académico y no representa una plataforma real de streaming.</p>
+    Nota: Esta es una simulación divertida del juego del Amigo Secreto 🎉. 
+    Los nombres y regalos no se guardan en ninguna base de datos, solo es un ejercicio educativo.
   </footer>
+
+  <script>
+    function sortear() {
+      const personajes = ["Ana", "Carlos", "Luisa", "Pedro", "Sofía", "Mateo", "Laura"];
+      const regalo = document.getElementById("regalo").value;
+      if (regalo === "") {
+        alert("Por favor escribe un regalo antes de continuar 🎁");
+        return;
+      }
+      const aleatorio = Math.floor(Math.random() * personajes.length);
+      const seleccionado = personajes[aleatorio];
+      document.getElementById("resultado").innerHTML =
+        "🎉 Tu amigo secreto es: <b>" + seleccionado + "</b><br>Tu regalo será: <b>" + regalo + "</b>";
+    }
+  </script>
 </body>
 </html>
